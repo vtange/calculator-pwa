@@ -90,15 +90,15 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request)
         .then(function(response){
             if(response) {
-                log("[SvcWrker] FETCH->CACHE_RESPONSE", url);
+                log("[SvcWrker] FETCH->CACHE_RESPONSE", event.request.url);
             } else {
-                log("[SvcWrker] FETCH->NO_CACHE_FOUND", url);
+                log("[SvcWrker] FETCH->NO_CACHE_FOUND", event.request.url);
             }
             return response || fetch(event.request).then(function(response){
                 if(response) {
-                    log("[SvcWrker] FETCH->LIVEFETCH_RESPONSE", url);
+                    log("[SvcWrker] FETCH->LIVEFETCH_RESPONSE", event.request.url);
                 } else {
-                    log("[SvcWrker] FETCH->NO_LIVEFETCH_RESPONSE", url);
+                    log("[SvcWrker] FETCH->NO_LIVEFETCH_RESPONSE", event.request.url);
                 }
                 return response;
             }).catch(function(err){
