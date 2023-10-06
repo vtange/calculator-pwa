@@ -10,9 +10,9 @@
                   <div class="display-container">
                       <div class="display">
                                 <h3>{{storage.SndLastEntered}}</h3>
-                                <h3 class="answer">{{storage.SndLastAns}}</h3>
+                                <h3 class="answer" data-txt="{{storage.SndLastAns}}"><button data-ng-click="copySndAns()">{{storage.SndLastAns}}</button></h3>
                                 <h3>{{storage.lastEntered}}</h3>
-                                <h3 class="answer">{{storage.lastAns}}</h3>
+                                <h3 class="answer" data-txt="{{storage.lastAns}}"><button data-ng-click="copyAns()">{{storage.lastAns}}</button></h3>
                           <div class="entering">
                             <hr>
                                 {{entered}}<span class="blinking">&#9612;</span>
@@ -36,21 +36,21 @@
                             <td><button data-ng-click="enter('*')">x</button></td>
                         </tr>
                         <tr>
-                            <td><button data-ng-click="wrapper('sin')">sin</button></td>
+                            <td><button data-ng-click="enter('PI')">π</button></td>
                             <td><button data-ng-click="enter(4)">4</button></td>
                             <td><button data-ng-click="enter(5)">5</button></td>
                             <td><button data-ng-click="enter(6)">6</button></td>
                             <td><button data-ng-click="enter('-')">-</button></td>
                         </tr>
                         <tr>
-                            <td><button data-ng-click="wrapper('cos')">cos</button></td>
+                            <td><button data-ng-click="cycleSinCosTan()">sɪɴ ᴄᴏs<br>ᴛᴀɴ</button></td>
                             <td><button data-ng-click="enter(7)">7</button></td>
                             <td><button data-ng-click="enter(8)">8</button></td>
                             <td><button data-ng-click="enter(9)">9</button></td>
                             <td><button data-ng-click="enter('+')">+</button></td>
                         </tr>
                         <tr>
-                            <td><button data-ng-click="wrapper('tan')">tan</button></td>
+                            <td><button data-ng-click="cycleLogLn()">ʟᴏɢ e</button></td>
                             <td><button data-ng-click="enter('.')">.</button></td>
                             <td><button data-ng-click="enter(0)">0</button></td>
                             <td><button data-ng-click="prefix('-')">(-)</button></td>

@@ -23,6 +23,12 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
 
     $scope.enter = function(content){
         if ($scope.entered.length < 40){
+            if($scope.storage.lastAns && !$scope.entered.length && typeof content !== "number") {
+                $scope.entered += $scope.storage.lastAns;
+                if(content==="PI"||content==="(") {
+                    $scope.entered += "*";
+                }
+            }
         $scope.entered += content;									//add new entered info
         }
     };
@@ -31,6 +37,16 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
     };
     $scope.clear = function(){
         $scope.entered = "";										//clear entered info
+    };
+    $scope.copyAns = function(){
+        if($scope.storage.lastAns) {
+            $scope.entered += $scope.storage.lastAns.toString();
+        }
+    };
+    $scope.copySndAns = function(){
+        if($scope.storage.SndLastAns) {
+            $scope.entered += $scope.storage.SndLastAns.toString();
+        }
     };
     $scope.prefix = function(content){								//for appending negative sign
         var replacement = "(" + content + $scope.entered.match(lastNum) + ")";
@@ -42,21 +58,24 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
         }
     };
     $scope.wrapper = function(content){												//for appending sin(), cos(), tan()
-        var replacement = content + "(" + $scope.entered.match(lastNum) + ")";
-		var altReplacement = content + "(" + $scope.entered.match(lastNum);
-		var operators = /([-+/*^])/g;
-
-        if ($scope.entered == ""){													//if nothing is in, sin(0, cos(0, etc. one parantheses for better edit
-            $scope.entered = "0";
-            replace(altReplacement);
-        }
-        else if($scope.entered.slice(-1).search(operators) != -1){					//if last entered char is an operator, return sin(0*, cos(0+, etc.
-            replace(altReplacement);
-        }
-        else{																		//if hit 'sin'/'cos' on a number
-        	replace(replacement);
-        }
+        $scope.entered = content + "(" + $scope.entered.match(lastNum) + ")";
     };
+    $scope.cycleSinCosTan = function(){
+        if ($scope.entered === "sin") {
+            $scope.wrapper = "cos";
+        } else if ($scope.entered === "cos") {
+            $scope.entered = "tan";
+        } else {
+            $scope.entered = "sin";
+        }
+    }
+    $scope.cycleLogLn = function(){
+        if ($scope.entered === "log") {
+            $scope.entered = "E";
+        } else {
+            $scope.entered = "log";
+        }
+    }
     $scope.evaluate = function(){
         $scope.answer = Parser.evaluate($scope.entered);
 

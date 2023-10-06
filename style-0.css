@@ -9,6 +9,7 @@ a {
     background-color: aliceblue;
     transform: scale(0);
     -ms-transform: scale(1);
+    pointer-events: none;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -22,6 +23,7 @@ a {
     border-radius: 10px;
     color: black;
     padding: 5px;
+    pointer-events: none;
     position: absolute;
     left: 50%;
     opacity:0;
@@ -34,7 +36,6 @@ a {
   width: 100vw;
   background: #333;
   color:white;
-  font-family: 'Courier New', Courier, monospace;
 }
 .centered-text{
     text-align: center;
@@ -57,6 +58,7 @@ a {
 .display-container{
   height:30%;
   width:100%;
+  font-family: 'Courier New', Courier, monospace;
   border-bottom:3px solid red;
   position: relative;
   overflow:hidden; /*limit childs within*/
@@ -72,9 +74,12 @@ a {
   padding:2%;
   overflow:hidden;
 }
-.display h3 {
+.display h3, .display button {
   font-size: 1.8rem;
   margin:0;
+}
+.display button {
+  cursor: pointer;
 }
 .entering {
   font-size: 1.8rem;
@@ -93,6 +98,9 @@ margin-bottom: 0px;
 }
 .answer {
     text-align: right;
+}
+.answer[data-txt=""] button {
+  visibility: hidden;
 }
 .blinking {
       animation: blink 1s steps(5, start) infinite;
@@ -128,7 +136,7 @@ td button{
     cursor: pointer;
     font-size: 1.8rem;
     height: 12vh;
+    min-width:60px;
     width:100%;
-    padding: 10px 35px 10px 35px;
     user-select: none;
 }
