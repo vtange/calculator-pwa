@@ -22,14 +22,10 @@
         entered.textContent = "";										//clear entered.textContent info
     };
     function copyAns(){
-        if(storage.lastAns) {
-            entered.textContent += storage.lastAns.toString();
-        }
+        entered.textContent += lastAns.textContent;
     };
     function copySndAns(){
-        if(storage.SndLastAns) {
-            entered.textContent += storage.SndLastAns.toString();
-        }
+        entered.textContent += SndLastAns.textContent;
     };
     function pref(content){								//for appending negative sign
         var replacement = "(" + content + entered.textContent.match(lastNum) + ")";
