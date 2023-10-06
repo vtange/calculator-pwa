@@ -1,93 +1,73 @@
-(function(){
-
-var app = angular.module('calculator',[]);
-
-app.factory('memory', [function(){
-  var storage = {
-      SndLastEntered:"",
-      SndLastAns:"",
-      lastEntered:"",
-      lastAns:"",
-  };
-  return storage;
-}]);//end of service
-
-app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
-    $scope.storage = memory; // load service for practice. making my life more complicated for no reason :)
-    $scope.entered = "";	 // init calculator
     var lastNum = /([()\w]+[-+/*^]?)(?!.*\d)/g;
 	function replace(withThis){
-			$scope.entered = $scope.entered.replace(lastNum,"");	//dropping the last number..
-        	$scope.entered += withThis;								//and replace it 'withThis'. 'withThis' is defined in invoked fn.
+			entered.textContent = entered.textContent.replace(lastNum,"");	//dropping the last number..
+            entered.textContent += withThis;								//and replace it 'withThis'. 'withThis' is defined in invoked fn.
 	}
 
-    $scope.enter = function(content){
-        if ($scope.entered.length < 40){
-            if($scope.storage.lastAns && !$scope.entered.length && typeof content !== "number") {
-                $scope.entered += $scope.storage.lastAns;
+    function enter (content){
+        if (entered.textContent.length < 40){
+            if(lastAns.textContent && !entered.textContent.length && typeof content !== "number") {
+                entered.textContent += lastAns.textContent;
                 if(content==="PI"||content==="(") {
-                    $scope.entered += "*";
+                    entered.textContent += "*";
                 }
             }
-        $scope.entered += content;									//add new entered info
+        entered.textContent += content;									//add new entered.textContent info
         }
     };
-    $scope.backspace = function(){
-        $scope.entered =  $scope.entered.substring(0, $scope.entered.length - 1);		// replace current entered with what it is minus last letter
+    function backspace(){
+        entered.textContent = entered.textContent.substring(0, entered.textContent.length - 1);		// replace current entered.textContent with what it is minus last letter
     };
-    $scope.clear = function(){
-        $scope.entered = "";										//clear entered info
+    function clearAll(){
+        entered.textContent = "";										//clear entered.textContent info
     };
-    $scope.copyAns = function(){
-        if($scope.storage.lastAns) {
-            $scope.entered += $scope.storage.lastAns.toString();
+    function copyAns(){
+        if(storage.lastAns) {
+            entered.textContent += storage.lastAns.toString();
         }
     };
-    $scope.copySndAns = function(){
-        if($scope.storage.SndLastAns) {
-            $scope.entered += $scope.storage.SndLastAns.toString();
+    function copySndAns(){
+        if(storage.SndLastAns) {
+            entered.textContent += storage.SndLastAns.toString();
         }
     };
-    $scope.prefix = function(content){								//for appending negative sign
-        var replacement = "(" + content + $scope.entered.match(lastNum) + ")";
-        if ($scope.entered == ""){
-            $scope.enter(content);									//if empty, just add "-"
+    function pref(content){								//for appending negative sign
+        var replacement = "(" + content + entered.textContent.match(lastNum) + ")";
+        if (entered.textContent == ""){
+            enter(content);									//if empty, just add "-"
         }
         else{														//else get the last number and wrap it with (-x)
 			replace(replacement);
         }
     };
-    $scope.wrapper = function(content){												//for appending sin(), cos(), tan()
-        $scope.entered = content + "(" + $scope.entered.match(lastNum) + ")";
+    function wrapper(content){												//for appending sin(), cos(), tan()
+        entered.textContent = content + "(" + entered.textContent.match(lastNum) + ")";
     };
-    $scope.cycleSinCosTan = function(){
-        if ($scope.entered === "sin") {
-            $scope.entered = "cos";
-        } else if ($scope.entered === "cos") {
-            $scope.entered = "tan";
+    function cycleSinCosTan(){
+        if (entered.textContent === "sin") {
+            entered.textContent = "cos";
+        } else if (entered.textContent === "cos") {
+            entered.textContent = "tan";
         } else {
-            $scope.entered = "sin";
+            entered.textContent = "sin";
         }
     }
-    $scope.cycleLogLn = function(){
-        if ($scope.entered === "log") {
-            $scope.entered = "E";
+    function cycleLogLn(){
+        if (entered.textContent === "log") {
+            entered.textContent = "E";
         } else {
-            $scope.entered = "log";
+            entered.textContent = "log";
         }
     }
-    $scope.evaluate = function(){
-        $scope.answer = Parser.evaluate($scope.entered);
+    function calculate(){
+        var answer = Parser.evaluate(entered.textContent);
 
-        $scope.storage.SndLastAns = $scope.storage.lastAns;				//push up the last entry
-        $scope.storage.SndLastEntered = $scope.storage.lastEntered;
+        SndLastAns.textContent = lastAns.textContent;				//push up the last entry
+        SndLastEntered.textContent = lastEntered.textContent;
+        SndLastEntered.nextElementSibling.setAttribute("data-txt",lastAns.textContent);
 
-        $scope.storage.lastAns = $scope.answer;		//push up current entry, show answer
-        $scope.storage.lastEntered = $scope.entered;
-        $scope.entered = "";											//clear entry for new entry
+        lastAns.textContent = answer;		//push up current entry, show answer
+        lastEntered.textContent = entered.textContent;
+        lastEntered.nextElementSibling.setAttribute("data-txt",answer);
+        entered.textContent = "";											//clear entry for new entry
     };
-
-}]);//end of controller
-
-
-})();
