@@ -4,8 +4,7 @@ var hashes = {
         "js":"app.js"
     },
     "vendors~main":{
-        "js":"angular.min.js",
-        "js2":"parser.js"
+        "js":"parser.js",
     },
     "":{"html":"index.html"}
 };

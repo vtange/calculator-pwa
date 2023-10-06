@@ -1,4 +1,4 @@
-importScripts("hashes.js");
+// importScripts("hashes.js");
 // Service worker is a simulated edge server. It caches files fetched online for offline use.
 function log(str) {
     console.log(str);
@@ -9,17 +9,16 @@ if(!hashes) {
 
 var cacheFiles = [
     './index.html',
-    './' + hashes["vendors~main"]["js"],
-    './' + hashes["vendors~main"]["js2"],
-    './' + hashes["main"]["js"], //<-- Chrome update on reload can break this, uncheck it and unregister if issue reloading
+    // './' + hashes["vendors~main"]["js"],
+    // './' + hashes["main"]["js"], //<-- Chrome update on reload can break this, uncheck it and unregister if issue reloading
 ];
-var cssPath = hashes["main"]["css"];
+// var cssPath = hashes["main"]["css"];
 //CSS can be missing from hashes.js if we're in dev/inject_mode.
-if(cssPath)
-{
-    cacheFiles.push('./'+cssPath);
-}
-var cacheName = hashes["vendors~main"]["js"]+hashes["vendors~main"]["js2"]+hashes["main"]["js"]+hashes["main"]["css"];
+// if(cssPath)
+// {
+//     cacheFiles.push('./'+cssPath);
+// }
+var cacheName = "CALC";
 
 // Install event
 self.addEventListener('install', function(event) {

@@ -1,10 +1,11 @@
 (function(){
+    /*
 var d0c = document;
 function mainjsLoaded() {
     var arrScripts = d0c.body.getElementsByTagName("script");
     for(var i = 0; i < arrScripts.length; i++)
     {
-        if(arrScripts[i].src.lastIndexOf("angular") != -1)
+        if(arrScripts[i].src.lastIndexOf("parser") != -1)
         {
             return true;
         }
@@ -16,7 +17,6 @@ function addBundleJS() {
     if(!mainjsLoaded() && hashes)
     {
         var vendors = d0c.createElement("script");
-        var vendors2 = d0c.createElement("script");
         var script = d0c.createElement("script");
         if(hashes["main"]["css"])//note: in inject_mode this will be undefined
         {
@@ -26,13 +26,11 @@ function addBundleJS() {
             d0c.head.appendChild(css);
         }
         vendors.src = './' + hashes["vendors~main"]["js"];
-        vendors2.src = './' + hashes["vendors~main"]["js2"];
         script.src = './' + hashes["main"]["js"];
         d0c.body.appendChild(vendors);
-        d0c.body.appendChild(vendors2);
         d0c.body.appendChild(script);
     }
-}
+}*/
 var nojs = document.getElementById("nojs-cover");
 if(nojs){
     nojs.style.display = "none";
@@ -49,14 +47,14 @@ if(typeof wait_for_svc_worker_setup === "function") {
     // If zzzz is in URL, delete and skip service worker.
     if(typeof window.location.href === "string" && window.location.href.indexOf("zzzz") !== -1) {
         delete_old_service_workers();
-        addBundleJS();
+        // addBundleJS();
     } else {
         wait_for_svc_worker_setup(0).then(function(rsVal){
-            addBundleJS();
+            // addBundleJS();
         });
     }
 } else {
     // No service worker mode
-    addBundleJS();
+    // addBundleJS();
 }
 })();
