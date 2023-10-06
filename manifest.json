@@ -1,0 +1,11 @@
+{
+    "name": "Calculator PWA",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "icon.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+}

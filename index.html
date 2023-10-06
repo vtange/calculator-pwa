@@ -1,5 +1,6 @@
 <html data-ng-app="calculator">
  <head>
+ <link rel="manifest" href="manifest.json" />
  <link rel="stylesheet" type="text/css" href="style-0.css"/>
  </head>
   <body>
@@ -9,10 +10,10 @@
                 <article class="calculator" data-ng-controller="MainCtrl as calc">
                   <div class="display-container">
                       <div class="display">
-                                <h3>{{storage.SndLastEntered}}</h3>
-                                <h3 class="answer" data-txt="{{storage.SndLastAns}}"><button data-ng-click="copySndAns()">{{storage.SndLastAns}}</button></h3>
-                                <h3>{{storage.lastEntered}}</h3>
-                                <h3 class="answer" data-txt="{{storage.lastAns}}"><button data-ng-click="copyAns()">{{storage.lastAns}}</button></h3>
+                                <div>{{storage.SndLastEntered}}</div>
+                                <div class="answer" data-txt="{{storage.SndLastAns}}"><button data-ng-click="copySndAns()"><span>{{storage.SndLastAns}}</span></button></div>
+                                <div>{{storage.lastEntered}}</div>
+                                <div class="answer" data-txt="{{storage.lastAns}}"><button data-ng-click="copyAns()"><span role="alert">{{storage.lastAns}}</span></button></div>
                           <div class="entering">
                             <hr>
                                 {{entered}}<span class="blinking">&#9612;</span>

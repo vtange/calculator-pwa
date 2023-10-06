@@ -47,7 +47,6 @@ a {
 .calculator {
   border:3px solid green;
 /* centered circle with a minimum size*/
-  max-width: 600px;
   min-width: 300px;
   min-height: 100vh;
   margin:auto;
@@ -74,8 +73,10 @@ a {
   padding:2%;
   overflow:hidden;
 }
-.display h3, .display button {
+.display div, .display button {
+  font-family: 'Courier New', Courier, monospace;
   font-size: 1.8rem;
+  font-weight: 600;
   margin:0;
 }
 .display button {
@@ -135,7 +136,7 @@ td button{
     border: 1px solid white;
     cursor: pointer;
     font-size: 1.8rem;
-    height: 12vh;
+    height: 10.8vh;
     min-width:60px;
     width:100%;
     user-select: none;
