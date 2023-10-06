@@ -8,7 +8,7 @@
         if (entered.textContent.length < 40){
             if(lastAns.textContent && !entered.textContent.length && typeof content !== "number") {
                 entered.textContent += lastAns.textContent;
-                if(content==="PI"||content==="(") {
+                if(content==="(") {
                     entered.textContent += "*";
                 }
             }
