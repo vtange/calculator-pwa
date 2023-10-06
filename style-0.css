@@ -1,0 +1,134 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+#ie11-cover {
+    background-color: aliceblue;
+    transform: scale(0);
+    -ms-transform: scale(1);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+}
+#nojs-cover {
+    animation: slowShow 0.5s normal forwards ease-in-out;
+    animation-delay: 2s;
+    background-color: rgb(253, 213, 220);
+    border: 2px solid pink;
+    border-radius: 10px;
+    color: black;
+    padding: 5px;
+    position: absolute;
+    left: 50%;
+    opacity:0;
+    top: 2rem;
+    transform: translatex(-50%);
+    z-index: 99;
+}
+.slide { /* single page */
+  min-height: 100vh;
+  width: 100vw;
+  background: #333;
+  color:white;
+  font-family: 'Courier New', Courier, monospace;
+}
+.centered-text{
+    text-align: center;
+}
+
+/*--------*/
+/*--calc--*/
+/*--------*/
+.calculator {
+  border:3px solid green;
+/* centered circle with a minimum size*/
+  max-width: 600px;
+  min-width: 300px;
+  min-height: 100vh;
+  margin:auto;
+
+  position: relative; /*makes a point for child containers to connect to*/
+  overflow:hidden; /*limit childs within*/
+}
+.display-container{
+  height:30%;
+  width:100%;
+  border-bottom:3px solid red;
+  position: relative;
+  overflow:hidden; /*limit childs within*/
+}
+.display{
+  position: absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  background-color: dimgray;
+  text-align: left;
+  padding:2%;
+  overflow:hidden;
+}
+.display h3 {
+  font-size: 1.8rem;
+  margin:0;
+}
+.entering {
+  font-size: 1.8rem;
+  position:absolute;
+  top:80%;
+  bottom:0;
+  right:0;
+  left:0;
+  padding:2%;
+  overflow:hidden;
+  user-select: none;
+}
+.entering hr{
+margin-top: 0px;
+margin-bottom: 0px;
+}
+.answer {
+    text-align: right;
+}
+.blinking {
+      animation: blink 1s steps(5, start) infinite;
+      -webkit-animation: blink 1s steps(5, start) infinite;
+}
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+
+
+
+/*--------*/
+/*--buttons--*/
+/*--------*/
+table {
+  width:100%;
+}
+table, tr, td{
+  text-align: center;
+}
+td {
+  max-height: 12vh;
+}
+td button{
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 1.8rem;
+    height: 12vh;
+    width:100%;
+    padding: 10px 35px 10px 35px;
+    user-select: none;
+}

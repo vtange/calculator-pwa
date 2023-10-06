@@ -1,0 +1,67 @@
+<html data-ng-app="calculator">
+ <head>
+ <link rel="stylesheet" type="text/css" href="style-0.css"/>
+ </head>
+  <body>
+    <div id="ie11-cover"><p>Please use a different web browser to see this site.</p><p>このサイトを見るために他のウェブブラウザーを使ってください。</p></div>
+    <div id="nojs-cover"><p>Please turn on Javascript to fully access this site's features.</p><p>このサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。</p></div>
+        <div id="slide1" class="slide centered-text">
+                <article class="calculator" data-ng-controller="MainCtrl as calc">
+                  <div class="display-container">
+                      <div class="display">
+                                <h3>{{storage.SndLastEntered}}</h3>
+                                <h3 class="answer">{{storage.SndLastAns}}</h3>
+                                <h3>{{storage.lastEntered}}</h3>
+                                <h3 class="answer">{{storage.lastAns}}</h3>
+                          <div class="entering">
+                            <hr>
+                                {{entered}}<span class="blinking">&#9612;</span>
+                          </div>
+                      </div>
+                  </div>
+                    <div class="button-area">
+                        <table>
+                        <tr>
+                            <td><button data-ng-click="clear()">clear</button></td>
+                            <td><button data-ng-click="enter('(')">(</button></td>
+                            <td><button data-ng-click="enter(')')">)</button></td>
+                            <td><button data-ng-click="enter('^')">^</button></td>
+                            <td><button data-ng-click="enter('/')">&#247;</button></td>
+                        </tr>
+                        <tr>
+                            <td><button data-ng-click="backspace()">&#8592;</button></td>
+                            <td><button data-ng-click="enter(1)">1</button></td>
+                            <td><button data-ng-click="enter(2)">2</button></td>
+                            <td><button data-ng-click="enter(3)">3</button></td>
+                            <td><button data-ng-click="enter('*')">x</button></td>
+                        </tr>
+                        <tr>
+                            <td><button data-ng-click="wrapper('sin')">sin</button></td>
+                            <td><button data-ng-click="enter(4)">4</button></td>
+                            <td><button data-ng-click="enter(5)">5</button></td>
+                            <td><button data-ng-click="enter(6)">6</button></td>
+                            <td><button data-ng-click="enter('-')">-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button data-ng-click="wrapper('cos')">cos</button></td>
+                            <td><button data-ng-click="enter(7)">7</button></td>
+                            <td><button data-ng-click="enter(8)">8</button></td>
+                            <td><button data-ng-click="enter(9)">9</button></td>
+                            <td><button data-ng-click="enter('+')">+</button></td>
+                        </tr>
+                        <tr>
+                            <td><button data-ng-click="wrapper('tan')">tan</button></td>
+                            <td><button data-ng-click="enter('.')">.</button></td>
+                            <td><button data-ng-click="enter(0)">0</button></td>
+                            <td><button data-ng-click="prefix('-')">(-)</button></td>
+                            <td><button data-ng-click="evaluate()">=</button></td>
+                        </tr>
+                        </table>
+                    </div>
+                </article>
+        </div>
+        <script type="text/javascript" src="angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="parser.js"></script>
+  </body>
+</html>
