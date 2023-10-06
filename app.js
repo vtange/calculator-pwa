@@ -62,7 +62,7 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
     };
     $scope.cycleSinCosTan = function(){
         if ($scope.entered === "sin") {
-            $scope.wrapper = "cos";
+            $scope.entered = "cos";
         } else if ($scope.entered === "cos") {
             $scope.entered = "tan";
         } else {
