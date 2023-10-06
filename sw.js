@@ -5,8 +5,8 @@ function log(str) {
 }
 if(!hashes) {
     log('[SvcWrker] NO HASHES');
-    return;
-}
+} else {
+
 var cacheFiles = [
     './index.html',
     './' + hashes["vendors~main"]["js"],
@@ -70,9 +70,9 @@ self.addEventListener('push', function(event) {
     const data = event.data.json() || {};
     const title = data.title || "Test Push Notification Title";
     const message =
-      data.message || "Test Push Notification Message.";
+        data.message || "Test Push Notification Message.";
     /*const notification = */new self.Notification(title, {
-      body: message,
+        body: message,
     //   tag: "simple-push-demo-notification",
     //   icon: "images/new-notification.png",
     });
@@ -108,3 +108,5 @@ self.addEventListener('fetch', function(event) {
         })
     );
 });
+
+}
