@@ -7,13 +7,13 @@
     <div id="ie11-cover"><p>Please use a different web browser to see this site.</p><p>このサイトを見るために他のウェブブラウザーを使ってください。</p></div>
     <div id="nojs-cover"><p>Please turn on Javascript to fully access this site's features.</p><p>このサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。</p></div>
         <div id="slide1" class="slide centered-text">
-                <article class="calculator" data-ng-controller="MainCtrl as calc">
+                <article class="calculator">
                   <div class="display-container">
                       <div class="display">
                                 <div id="SndLastEntered"></div>
-                                <div class="answer" data-txt=""><button onclick="copySndAns()"><span id="SndLastAns"></span></button></div>
+                                <div class="answer" data-txt=""><button id="SndLastAns"></button></div>
                                 <div id="lastEntered"></div>
-                                <div class="answer" data-txt=""><button onclick="copyAns()"><span role="alert" id="lastAns"></span></button></div>
+                                <div class="answer" data-txt=""><button role="alert" id="lastAns"></button></div>
                           <div class="entering">
                             <hr>
                                 <span id="entered"></span><span class="blinking">&#9612;</span>
@@ -23,39 +23,39 @@
                     <div class="button-area">
                         <table>
                         <tr>
-                            <td><button onclick="clearAll()">clear</button></td>
-                            <td><button onclick="enter('(')">(</button></td>
-                            <td><button onclick="enter(')')">)</button></td>
-                            <td><button onclick="enter('^')">^</button></td>
-                            <td><button onclick="enter('/')">&#247;</button></td>
+                            <td><button id="clearAll">clear</button></td>
+                            <td><button data-enter="(">(</button></td>
+                            <td><button data-enter=")">)</button></td>
+                            <td><button data-enter="^">^</button></td>
+                            <td><button data-enter="/">&#247;</button></td>
                         </tr>
                         <tr>
-                            <td><button onclick="backspace()">&#8592;</button></td>
-                            <td><button onclick="enter(1)">1</button></td>
-                            <td><button onclick="enter(2)">2</button></td>
-                            <td><button onclick="enter(3)">3</button></td>
-                            <td><button onclick="enter('*')">x</button></td>
+                            <td><button id="backspace">&#8592;</button></td>
+                            <td><button data-enter="1">1</button></td>
+                            <td><button data-enter="2">2</button></td>
+                            <td><button data-enter="3">3</button></td>
+                            <td><button data-enter="*">x</button></td>
                         </tr>
                         <tr>
-                            <td><button onclick="enter('PI')">π</button></td>
-                            <td><button onclick="enter(4)">4</button></td>
-                            <td><button onclick="enter(5)">5</button></td>
-                            <td><button onclick="enter(6)">6</button></td>
-                            <td><button onclick="enter('-')">-</button></td>
+                            <td><button data-enter="PI">π</button></td>
+                            <td><button data-enter="4">4</button></td>
+                            <td><button data-enter="5">5</button></td>
+                            <td><button data-enter="6">6</button></td>
+                            <td><button data-enter="-">-</button></td>
                         </tr>
                         <tr>
-                            <td><button onclick="cycleSinCosTan()">sɪɴ ᴄᴏs<br>ᴛᴀɴ</button></td>
-                            <td><button onclick="enter(7)">7</button></td>
-                            <td><button onclick="enter(8)">8</button></td>
-                            <td><button onclick="enter(9)">9</button></td>
-                            <td><button onclick="enter('+')">+</button></td>
+                            <td><button id="cycleSinCosTan">sɪɴ ᴄᴏs<br>ᴛᴀɴ</button></td>
+                            <td><button data-enter="7">7</button></td>
+                            <td><button data-enter="8">8</button></td>
+                            <td><button data-enter="9">9</button></td>
+                            <td><button data-enter="+">+</button></td>
                         </tr>
                         <tr>
-                            <td><button onclick="cycleLogLn()">ʟᴏɢ e</button></td>
-                            <td><button onclick="enter('.')">.</button></td>
-                            <td><button onclick="enter(0)">0</button></td>
-                            <td><button onclick="pref('-')">(-)</button></td>
-                            <td><button onclick="calculate()">=</button></td>
+                            <td><button id="cycleLogLn">ʟᴏɢ e</button></td>
+                            <td><button data-enter=".">.</button></td>
+                            <td><button data-enter="0">0</button></td>
+                            <td><button id="hyphen">(-)</button></td>
+                            <td><button id="calculateBtn">=</button></td>
                         </tr>
                         </table>
                     </div>
