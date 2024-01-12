@@ -3,9 +3,9 @@ function replace(withThis){
     entered.textContent = entered.textContent.replace(lastNum,"");	//dropping the last number..
     entered.textContent += withThis;								//and replace it 'withThis'. 'withThis' is defined in invoked fn.
 }
-function enter (content){
+function enter (content, isNumber){
     if (entered.textContent.length < 40){
-        if(lastAns.textContent && !entered.textContent.length && typeof content !== "number") {
+        if(lastAns.textContent && !entered.textContent.length && !isNumber) {
             entered.textContent += lastAns.textContent;
             if(content==="(") {
                 entered.textContent += "*";
@@ -95,8 +95,9 @@ document.body.addEventListener("click",function(e){
                 break;
             default:
                 var toEnter = e.target.getAttribute("data-enter");
+                var isNumber = e.target.getAttribute("data-number");
                 if(typeof toEnter === "string") {
-                    enter(toEnter);
+                    enter(toEnter,isNumber);
                 }
         }
     }

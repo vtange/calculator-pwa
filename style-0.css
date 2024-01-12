@@ -46,8 +46,6 @@ a {
 /*--------*/
 .calculator {
   border:3px solid green;
-/* centered circle with a minimum size*/
-  min-width: 300px;
   min-height: 100vh;
   margin:auto;
 
@@ -128,12 +126,13 @@ table, tr, td{
 }
 td {
   max-height: 12vh;
+  min-width: 48px;
 }
 td button{
     cursor: pointer;
-    font-size: 1.8rem;
+    font-size: 1.8em;
     height: 10.8vh;
-    min-width:60px;
+    padding: 0;
     width:100%;
     user-select: none;
 }
