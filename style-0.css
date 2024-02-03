@@ -1,6 +1,7 @@
 body {
   overflow: hidden;
   margin: 0;
+  touch-action: none; /* required to prevent zooming panning in iOS Safari 10+, which overrides "user-scalable=no" */
 }
 a {
   text-decoration: none;
@@ -32,41 +33,35 @@ a {
     z-index: 99;
 }
 .slide { /* single page */
-  min-height: 100vh;
-  width: 100vw;
   background: #333;
   color:white;
-}
-.centered-text{
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 /*--------*/
 /*--calc--*/
 /*--------*/
 .calculator {
-  border:3px solid green;
-  min-height: 100vh;
-  margin:auto;
-
-  position: relative; /*makes a point for child containers to connect to*/
+  bottom: 0;
+  align-self: center;
+  position: fixed;
   overflow:hidden; /*limit childs within*/
 }
 .display-container{
-  height:30%;
   width:100%;
   font-family: 'Courier New', Courier, monospace;
-  border-bottom:3px solid red;
   position: relative;
   overflow:hidden; /*limit childs within*/
 }
 .display{
-  position: absolute;
-  top:0;
-  bottom:0;
-  right:0;
-  left:0;
   background-color: dimgray;
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: flex-end;
   text-align: left;
   padding:2%;
   overflow:hidden;
@@ -76,10 +71,10 @@ a {
   font-size: 1.8rem;
   font-weight: 600;
   margin:0;
+  min-height: 40px;
 }
 .entering {
   font-size: 1.8rem;
-  position:absolute;
   top:80%;
   bottom:0;
   right:0;
@@ -118,21 +113,18 @@ margin-bottom: 0px;
 /*--------*/
 /*--buttons--*/
 /*--------*/
-table {
-  width:100%;
-}
-table, tr, td{
-  text-align: center;
+.button-area {
+  border-top:3px solid red;
 }
 td {
   max-height: 12vh;
-  min-width: 48px;
+  min-width: 18vw;
 }
 td button{
-    cursor: pointer;
-    font-size: 1.8em;
-    height: 10.8vh;
-    padding: 0;
-    width:100%;
-    user-select: none;
+  cursor: pointer;
+  font-size: 36px;
+  height: 10.8vh;
+  padding: 0;
+  width:100%;
+  user-select: none;
 }
