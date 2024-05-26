@@ -122,7 +122,7 @@ td {
 }
 td button{
   cursor: pointer;
-  font-size: 20px;
+  font-size: 20px; /* font size controls size of <button> in ios, cannot be overridden by padding */
   height: 10.8vh;
   padding: 0;
   width:100%;
